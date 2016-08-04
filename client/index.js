@@ -1,3 +1,4 @@
 var aggregator = require('./event-aggregator.js');
-var listeners = require('./listeners.js')(aggregator);
+var aggregatorInstance  = new aggregator(); 
+var listeners = require('./listeners.js')(aggregatorInstance);
 

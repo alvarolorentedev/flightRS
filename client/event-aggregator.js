@@ -1,5 +1,5 @@
 //extract from https://gist.github.com/ryanjadhav/7366955#file-event_aggregator-js
-module.export = class EventAggregator {
+module.exports = class EventAggregator {
     constructor(){
             this.events = {};
     }

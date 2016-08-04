@@ -1,9 +1,5 @@
 var _aggregator;
 
-module.export = function(aggregator){
-    _aggregator = aggregator;
-}
-
 $(function() {
     $("#flight-search").submit(function(){
         $('#collapseOne').collapse('hide');
@@ -11,3 +7,7 @@ $(function() {
         return false;
     });
 });
+
+module.exports = function(aggregator){
+    _aggregator = aggregator;
+}
