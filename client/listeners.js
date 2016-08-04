@@ -3,7 +3,7 @@ var _aggregator;
 $(function() {
     $("#flight-search").submit(function(){
         $('#collapseOne').collapse('hide');
-        alert("search");
+        _aggregator.trigger("api:search:flights", $('#FromLocation').val(), $('#ToLocation').val(), $('#Date').val());
         return false;
     });
 });
