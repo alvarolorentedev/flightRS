@@ -2,11 +2,13 @@
   "name": "travel",
   "version": "0.0.1",
   "description": "front end app example for travel reservations",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .",
+    "dev": "node . --dev",
+    "test": "mocha test"
   },
-  "author": "kanekotic",
+  "author": "kanekotic <alvarojosepl@gmail.com> (https://github.com/kanekotic)",
   "license": "MIT",
    "devDependencies": {
     "blanket": "^1.2.1",
