@@ -1,0 +1,11 @@
+{
+  "name": "travel",
+  "version": "0.0.1",
+  "description": "front end app example for travel reservations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kanekotic",
+  "license": "MIT"
+}
