@@ -3,16 +3,16 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" id="date2D">-2 Days</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" id="date1D">-1 Days</a></li>
-    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" id="dateO">D Days</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" id="date1U">+1 Days</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" id="date2U">+2 Days</a></li>
+    <li><a href="#date2D_table" a data-toggle="tab" id="date2D">-2 Days</a></li>
+    <li><a href="#date1D_table" a data-toggle="tab" id="date1D">-1 Days</a></li>
+    <li class="active"><a href="#date0_table" data-toggle="tab" id="date0">D Days</a></li>
+    <li><a href="#date1U_table" data-toggle="tab" id="date1U">+1 Days</a></li>
+    <li><a href="#date2U_table" data-toggle="tab" id="date2U">+2 Days</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active">
+    <div role="tabpanel" class="tab-pane" id="date2D_table">
         <table class="table">
             <thead>
                 <tr>
@@ -25,7 +25,7 @@
             </tbody>
         </table>
     </div>
-    <div role="tabpanel" class="tab-pane" id="date1D.content">
+    <div role="tabpanel" class="tab-pane" id="date1D_table">
         <table class="table">
             <thead>
                 <tr>
@@ -38,7 +38,7 @@
             </tbody>
         </table>
     </div>
-    <div role="tabpanel" class="tab-pane">
+    <div role="tabpanel" class="tab-pane active" id="date0_table">
         <table class="table">
             <thead>
                 <tr>
@@ -48,15 +48,10 @@
                 </tr>
             </thead>
             <tbody id="date0_table_body" class="availability-table-body">
-            <!--<tr>
-                <td>Air France</td>
-                <td>12-14</td>
-                <td>200$</td>
-            </tr>-->
             </tbody>
         </table>
     </div>
-    <div role="tabpanel" class="tab-pane" id="date1U.content">
+    <div role="tabpanel" class="tab-pane" id="date1U_table">
         <table class="table">
             <thead>
                 <tr>
@@ -69,7 +64,7 @@
             </tbody>
         </table>
     </div>
-    <div role="tabpanel" class="tab-pane">
+    <div role="tabpanel" class="tab-pane" id="date2U_table">
         <table class="table">
             <thead>
                 <tr>

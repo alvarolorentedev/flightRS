@@ -6,14 +6,14 @@ module.exports = class apiHandler{
             var result = {
                 day2D : 
                 [
-                    {Airline: "Air France", Departs: new Date(), Arrives: new Date(), Price: "200 $"},
+                    {Airline: "AF", Departs: new Date(), Arrives: new Date(), Price: "200 $"},
                     {Airline: "KLM", Departs: new Date(), Arrives: new Date(), Price: "170 $"},
                     {Airline: "BA", Departs: new Date(), Arrives: new Date(), Price: "270 $"}
                 ],
                 day1D : 
                 [
-                    {Airline: "Air France", Departs: new Date(), Arrives: new Date(), Price: "200 $"},
-                    {Airline: "KLM", Departs: new Date(), Arrives: new Date(), Price: "170 $"},
+                    {Airline: "AF", Departs: new Date(), Arrives: new Date(), Price: "200 $"},
+                    {Airline: "Iberia", Departs: new Date(), Arrives: new Date(), Price: "170 $"},
                     {Airline: "BA", Departs: new Date(), Arrives: new Date(), Price: "270 $"}
                 ],
                 day0 : 
