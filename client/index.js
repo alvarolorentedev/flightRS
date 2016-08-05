@@ -1,12 +1,17 @@
-var aggregator = require('./event-aggregator.js');
-var requestModel= require('./models/request.js');
-var requestPresenter = require('./presenters/requestPresenter.js');
+var Aggregator = require('./event-aggregator.js');
+var RequestModel= require('./models/request.js');
+var RequestPresenter = require('./presenters/request-presenter.js');
+var AvailabilityModel= require('./models/availabiliy.js');
+var AvailabilityPresenter = require('./presenters/availability-presenter.js');
 
-var aggregatorInstance  = new aggregator(); 
+var aggregatorInstance  = new Aggregator(); 
 
-var requestModel = new requestModel();
-var requestsview = new requestPresenter($(document.search), aggregatorInstance, requestModel);
+var requestmodel = new RequestModel();
+var requestsview = new RequestPresenter($(document.search), aggregatorInstance, requestmodel);
 
-aggregatorInstance.on('api:search:flights', function(model) {
+var availabilitymodel = new AvailabilityModel();
+var availabilityview = new AvailabilityPresenter($(document.availability), aggregatorInstance, availabilitymodel);
+
+aggregatorInstance.on('api:search:request', function(model) {
     console.log(model.from  + " " + model.to + " " + model.date);
 });

@@ -1,17 +1,17 @@
-module.exports = class request{
+module.exports = class requestPresenter{
     constructor(document, aggregator, model){
         this._document = document;
         this._aggregator = aggregator;
         this._model = model;
-        this._initEvents();
+        this._bindEvents();
     }
     
-    _initEvents(){
+    _bindEvents(){
         var self = this;
         this._document.ready(function() {
             $("#flight-search").submit(function(){
                 $('#collapseOne').collapse('hide');
-                self._aggregator.trigger("api:search:flights", self._model);
+                self._aggregator.trigger("api:search:request", self._model);
                 return false;
             });
 
