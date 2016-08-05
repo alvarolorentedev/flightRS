@@ -3,15 +3,18 @@ var RequestModel= require('./models/request.js');
 var RequestPresenter = require('./presenters/request-presenter.js');
 var AvailabilityModel= require('./models/availabiliy.js');
 var AvailabilityPresenter = require('./presenters/availability-presenter.js');
+var APIHandler = require('./api-handler.js');
 
-var aggregatorInstance  = new Aggregator(); 
+var aggregatorHandler  = new Aggregator(); 
 
-var requestmodel = new RequestModel();
-var requestsview = new RequestPresenter($(document.search), aggregatorInstance, requestmodel);
+var request = new RequestModel();
+var requestsview = new RequestPresenter($(document.search), aggregatorHandler, request);
 
-var availabilitymodel = new AvailabilityModel();
-var availabilityview = new AvailabilityPresenter($(document.availability), aggregatorInstance, availabilitymodel);
+var availability = new AvailabilityModel();
+var availabilityview = new AvailabilityPresenter($(document.availability), aggregatorHandler, availability);
 
-aggregatorInstance.on('api:search:request', function(model) {
+var apihandler = new APIHandler(aggregatorHandler);
+
+aggregatorHandler.on('api:search:request', function(model) {
     console.log(model.from  + " " + model.to + " " + model.date);
 });
