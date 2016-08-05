@@ -7,10 +7,15 @@ module.exports = class requestPresenter{
     }
     
     _bindEvents(){
-        var self = this;
-        this._aggregator.on("api:search:results", () => {
+        this._aggregator.on("api:search:results", (results) => {
             $('#availability').show();
-            $("#availability-table-body").empty();
+            $(".availability-table-body").empty();
+            this.updateResults(results);
         });
+    }
+
+    updateResults(results)
+    {
+
     }
 }

@@ -7,24 +7,23 @@ module.exports = class requestPresenter{
     }
     
     _bindEvents(){
-        var self = this;
-        this._document.ready(function() {
-            $("#flight-search").submit(function(){
+        this._document.ready(() => {
+            $("#flight-search").submit(() => {
                 $('#collapseOne').collapse('hide');
-                self._aggregator.trigger("api:search:request", self._model);
+                this._aggregator.trigger("api:search:request", this._model);
                 return false;
             });
 
-             $("#FromLocation").change(function(){
-                self._model.from = $('#FromLocation').val();
+             $("#FromLocation").change(() => {
+                this._model.from = $('#FromLocation').val();
              });
 
-             $("#ToLocation").change(function(){
-                self._model.to = $('#ToLocation').val();
+             $("#ToLocation").change(() => {
+                this._model.to = $('#ToLocation').val();
              });
 
-             $("#Date").change(function(){
-                self._model.date = $('#Date').val();
+             $("#Date").change(() => {
+                this._model.date = $('#Date').val();
              });
         });
     }
