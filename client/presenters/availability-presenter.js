@@ -10,12 +10,27 @@ module.exports = class requestPresenter{
         this._aggregator.on("api:search:results", (results) => {
             $('#availability').show();
             $(".availability-table-body").empty();
-            this.updateResults(results);
+            this._updateResults(results);
         });
     }
 
-    updateResults(results)
+    _updateResults(results)
     {
+        this._updateTable($('#date2D_table_body'),results.day2D);
+        this._updateTable($('#date1D_table_body'),results.day1D);
+        this._updateTable($('#date0_table_body'),results.day0);
+        this._updateTable($('#date1U_table_body'),results.day1U);
+        this._updateTable($('#date2U_table_body'),results.day2U);
+    }
 
+    _updateTable(table, results)
+    {
+        for(var result of results)
+        {
+            var tr = $('<tr/>').appendTo(table);
+            tr.append('<td>' + result.Airline + '</td>');
+            tr.append('<td>' + result.Departs + ' - ' + result.Arrives + '</td>');
+            tr.append('<td>' + result.Price + '</td>');
+        }
     }
 }

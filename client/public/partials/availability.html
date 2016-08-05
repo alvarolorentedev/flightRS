@@ -12,27 +12,76 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="date2D.content"></div>
-    <div role="tabpanel" class="tab-pane" id="date1D.content"></div>
-    <div role="tabpanel" class="tab-pane" id="date0.content"></div>
-    <table class="table">
-    <thead>
-      <tr>
-        <th>Airline</th>
-        <th>Schedule</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody class="availability-table-body">
-      <tr>
-        <td>Air France</td>
-        <td>12-14</td>
-        <td>200$</td>
-      </tr>
-    </tbody>
-  </table>
-    <div role="tabpanel" class="tab-pane" id="date1U.content"></div>
-    <div role="tabpanel" class="tab-pane" id="date2U.content"></div>
+    <div role="tabpanel" class="tab-pane active">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Airline</th>
+                    <th>Schedule</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="date2D_table_body" class="availability-table-body">
+            </tbody>
+        </table>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="date1D.content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Airline</th>
+                    <th>Schedule</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="date1D_table_body" class="availability-table-body">
+            </tbody>
+        </table>
+    </div>
+    <div role="tabpanel" class="tab-pane">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Airline</th>
+                    <th>Schedule</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="date0_table_body" class="availability-table-body">
+            <!--<tr>
+                <td>Air France</td>
+                <td>12-14</td>
+                <td>200$</td>
+            </tr>-->
+            </tbody>
+        </table>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="date1U.content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Airline</th>
+                    <th>Schedule</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="date1U_table_body" class="availability-table-body">
+            </tbody>
+        </table>
+    </div>
+    <div role="tabpanel" class="tab-pane">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Airline</th>
+                    <th>Schedule</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="date2U_table_body" class="availability-table-body">
+            </tbody>
+        </table>
+    </div>
   </div>
 
 </div>
