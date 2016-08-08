@@ -8,9 +8,9 @@ module.exports = class requestPresenter{
     
     _bindEvents(){
         this._aggregator.on("api:search:results", (results) => {
-            $('#availability').show();
             $(".availability-table-body").empty();
             this._updateResults(results);
+            $('#availability').show();
         });
     }
 
@@ -21,6 +21,7 @@ module.exports = class requestPresenter{
         this._updateTable($('#date0'), $('#date0_table_body'),results.day0);
         this._updateTable($('#date1U'), $('#date1U_table_body'),results.day1U);
         this._updateTable($('#date2U'), $('#date2U_table_body'),results.day2U);
+        this._bindFlightEvents();
     }
 
     _updateTable(header, table, results)
@@ -29,10 +30,19 @@ module.exports = class requestPresenter{
         for(var result of results)
         {
             var tr = $('<tr/>').appendTo(table);
-            var div = $('<div/>').appendTo(tr);
-            div.append('<div class="table__airline">' + result.airline + '</div>');
-            div.append('<div class="table__price">' + result.price + '</div>');
-            div.append('<div class="table__date">' + moment(result.departs).format("YYYY-MM-DD  h:mm a") + ' - ' + moment(result.arrives).format("YYYY-MM-DD h:mm a") + '</div>');
+            var div = $('<div class="flight well" />').appendTo(tr);
+            div.append('<div class="flight__airline">' + result.airline + '</div>');
+            div.append('<div class="flight__price">' + result.price + '</div>');
+            div.append('<div class="flight__date">' + moment(result.departs).format("YYYY-MM-DD  h:mm a") + ' - ' + moment(result.arrives).format("YYYY-MM-DD h:mm a") + '</div>');
         }
+    }
+
+    _bindFlightEvents(){
+        this._document.ready(() =>{
+            $('.flight').click(function() {
+                $('.flight').removeClass('flight--selected');
+                $(this).addClass('flight--selected');
+            });
+        });
     }
 }

@@ -1,5 +1,13 @@
-.table__airline
-    float: left
+clouds = #ecf0f1
 
-.table__price
-    float: right
+.flight
+    background: clouds;
+    margin: 0px;
+    &:hover
+        background: @background - 40;
+    &__airline
+        float: left
+    &__price
+        float: right
+    &--selected
+        background: @background - 20;
