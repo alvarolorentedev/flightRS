@@ -5,10 +5,14 @@ dist: trusty
 install:
 - nvm install 6
 - npm install npm -g
+- npm install newman -g
 - if [[ "$TRAVIS_TAG" ]]; then npm install --production ; fi
 - if [[ "$TRAVIS_BRANCH" ]]; then npm install ; fi
 - npm prune
 
 script:
-- if [[ "$TRAVIS_TAG" ]]; then npm run dist --production ; fi
-- if [[ "$TRAVIS_BRANCH" ]]; then npm test ; fi
+- npm test
+- npm start 1>/dev/null 2>/dev/null &
+- newman -c ./test/Test_flightRS.json -x
+- killall node
+#- if [[ "$TRAVIS_TAG" ]]; then npm run dist --production ; fi
