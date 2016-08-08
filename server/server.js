@@ -8,7 +8,7 @@ var isDevMode = process.argv.includes('--dev');
 if(isDevMode)
     require('./webpack-load')(app);
 
-app.use(express.static('client/public'));
+app.use(express.static('client/views/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

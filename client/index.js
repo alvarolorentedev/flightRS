@@ -1,9 +1,12 @@
 var Aggregator = require('./event-aggregator.js');
+var APIHandler = require('./api-handler.js');
+
 var RequestModel= require('./models/request.js');
 var RequestPresenter = require('./presenters/request-presenter.js');
+
 var AvailabilityModel= require('./models/availabiliy.js');
 var AvailabilityPresenter = require('./presenters/availability-presenter.js');
-var APIHandler = require('./api-handler.js');
+var AvailabilityStyle = require('./views/styles/availability.styl');
 
 var aggregatorHandler  = new Aggregator(); 
 var apihandler = new APIHandler(aggregatorHandler);
