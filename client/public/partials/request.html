@@ -11,18 +11,21 @@
             <div class="panel-body">
                 <form id="flight-search">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="FromLocation" placeholder="From">
+                        <input type="text" class="form-control typeahead" data-provide="typeahead" id="FromLocation" placeholder="From" data-is-not-to="_" data-is-airport="_" required>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="ToLocation" placeholder="To">
+                        <input type="text" class="form-control typeahead" data-provide="typeahead" id="ToLocation" placeholder="To" data-is-not-from="_" data-is-airport="_" required>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control" id="Date" placeholder="Date">
+                        <div class="input-group date" id="datepicker" data-provide="datepicker">
+                            <input type="text" class="form-control" id="Date" placeholder="Date" data-is-valid-date="_" required>
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
+                        <div class="help-block with-errors"></div>
                     </div>
                 </form>
                 <button type="submit" form="flight-search" class="glyphicon glyphicon-search btn btn-primary pull-right"></button>
