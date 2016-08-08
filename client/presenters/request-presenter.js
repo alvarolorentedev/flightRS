@@ -53,7 +53,8 @@ module.exports = class requestPresenter{
     _initControls()
     {
         this._document.ready(() => {
-             $("#flight-search").validator({                
+             $("#flight-search").validator({  
+                delay: 1000,              
                 custom: {
                     'is-airport': ($el) => { 
                           if(!this._airports.some((airport) => { return $el.val() == airport.id;}))
@@ -68,14 +69,15 @@ module.exports = class requestPresenter{
                             return "Arrival and Departure airports can't be the same";
                     },
                     'is-valid-date': ($el) => { 
-                          if(moment($el.val(), "MM/DD/YYYY").diff(new Date(), 'days') < 0)
-                            return "date has to be for future";
+                          if(moment($el.val(), "YYYY-MM-DD").diff(new Date(), 'days') < 0)
+                            return "Date has to on the future";
                     }
                 } 
             });
 
             $('#datepicker').datepicker({ 
-                startDate: new Date()
+                startDate: new Date(),
+                format: 'yyyy-mm-dd'
             });            
         });
     }

@@ -29,7 +29,7 @@ module.exports = class requestPresenter{
         {
             var tr = $('<tr/>').appendTo(table);
             tr.append('<td>' + result.airline + '</td>');
-            tr.append('<td>' + result.departs + ' - ' + result.arrives + '</td>');
+            tr.append('<td>' + moment(result.departs).format("YYYY-MM-DD") + ' - ' + moment(result.arrives).format("YYYY-MM-DD") + '</td>');
             tr.append('<td>' + result.price + '</td>');
         }
     }
