@@ -2,21 +2,19 @@
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
                 Your Search
             </a>
             </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div id="collapseSearch" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
                 <form id="flight-search">
                     <div class="form-group">
-                        <input type="text" class="form-control typeahead" id="FromLocation" placeholder="From" data-is-not-to="_" required><!--data-is-airport="_"-->
-                        <div class="help-block with-errors"></div>
+                        <input type="text" class="form-control typeahead" id="FromLocation" placeholder="From" required>                                           
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control typeahead" id="ToLocation" placeholder="To" data-is-not-from="_" required><!--data-is-airport="_"-->
-                        <div class="help-block with-errors"></div>
+                        <input type="text" class="form-control typeahead" id="ToLocation" placeholder="To" required>
                     </div>
                     <div class="form-group">
                         <div class="input-group date" id="datepicker">

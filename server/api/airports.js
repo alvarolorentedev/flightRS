@@ -3,7 +3,6 @@ var router = express.Router();
 var http = require('http');
 
 router.post('/', function(req, res) {
-    console.log('yolo');
     var options = {
         host: 'node.locomote.com',
         path: '/code-task/airports?q='+req.body.place
@@ -14,7 +13,6 @@ router.post('/', function(req, res) {
         str += chunk;
     });
     response.on('end',  () => {
-        console.log(str);
         res.send(str);
     });
     }
