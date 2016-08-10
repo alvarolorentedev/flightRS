@@ -31,12 +31,6 @@ var mockFlights = {
                 ]
             };
 
-var mockAirports = [
-    {id: "LHR", name: "London"},
-    {id: "CDG", name: "Paris Charles Du Gaule"},
-    {id: "ORY", name: "Paris Orly"}
-];
-
 module.exports = class apiHandler{
     constructor(aggregator){
         this._aggregator = aggregator;
@@ -44,12 +38,6 @@ module.exports = class apiHandler{
             //TODO: implement call to back end
             var result = mockFlights;
             this._aggregator.trigger("api:search:results", result);
-        });
-
-        aggregator.on("api:airports:request", () => {
-            //TODO: implement call to back end
-            var result = mockAirports;
-            this._aggregator.trigger("api:airports:results", result);
         });
     }
 }

@@ -16,7 +16,6 @@ module.exports = class requestPresenter{
              });
 
              $("#ToLocation").change(() => {
-                 
                 this._model.to = $('#ToLocation').val();
              });
 
