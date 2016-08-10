@@ -4,58 +4,59 @@ module.exports = class requestPresenter{
         this._aggregator = aggregator;
         this._model = model;
         this._airports = [];
-        this._bindEvents();    
+        this._bindEvents();  
+        this._initValidation();  
         this._initControls();
     }
    
     _bindEvents(){
         this._document.ready(() => {
-            $("#flight-search").validator().on('submit', (e) => {
-                if (!e.isDefaultPrevented()) {
-                    this._model.from = $('#FromLocation').val();
-                    this._model.to = $('#ToLocation').val();
-                    this._model.date = $('#Date').val();
-                    $('#collapseSearch').collapse('hide');
-                    this._aggregator.trigger("api:search:request", this._model);
-                    
-                }
-                return false;
-            });   
+            $("#FromLocation").change(() => {
+                this._model.from = $('#FromLocation').val();
+             });
+
+             $("#ToLocation").change(() => {
+                 
+                this._model.to = $('#ToLocation').val();
+             });
+
+             $("#Date").change(() => {
+                this._model.date = $('#Date').val();
+             });   
         });        
     }
 
-    _initControls()
+    _initValidation()
     {
         this._document.ready(() => {
-             $("#flight-search").validator({  
-                delay: 1000,              
+             $("#flight-search").validator({      
                 custom: {
-                    'is-valid-date': ($el) => { 
-                          if(moment($el.val(), "YYYY-MM-DD").diff(new Date(), 'days') < 0)
-                            return "Date has to on the future";
+                    'is-not-from': ($el) => { 
+                        if($el.val() === this._model.from)
+                            return "Arrival and Departure airports can't be the same";   
+                     },
+                     'is-not-to': ($el) => { 
+                          if($el.val() === this._model.to)
+                            return "Arrival and Departure airports can't be the same";
                     }
                 } 
                 
-            });
-
+            }).on('submit', this.OnSubmit.bind(this));
+        });
+    }
+    
+    _initControls()
+    {
+        this._document.ready(() => {
             $('.typeahead').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 2
-            }, {
-                display: 'airportCode',
-                source: (query, sync, async) => {
-                    $.post('/airports', { place : query }, (data) => {
+                source: (query, process) =>{
+                        $.post('/airports', { place : query }, (data) => {
                             this._airports = data;
-                            async(data);
+                            process(data);
                         },"json");
                 },
-                templates: {
-                    suggestion: (airport) => {
-                        return '<div>' + airport.airportName + '('+ airport.airportCode +')' + '</div>';
-                    },
-                    pending: '<div>Please wait...</div>'
-                }
+                 displayText:  (item) => { return item.airportName; }, 
+                 updater: (item) => { return item.airportCode; }
             });
             
             $('#datepicker').datepicker({ 
@@ -63,5 +64,13 @@ module.exports = class requestPresenter{
                 format: 'yyyy-mm-dd'
             });            
         });
+    }
+
+    OnSubmit(e){
+        if (!e.isDefaultPrevented()) {
+            $('#collapseSearch').collapse('hide');
+            this._aggregator.trigger("api:search:request", this._model);        
+        }
+        return false;
     }
 }
