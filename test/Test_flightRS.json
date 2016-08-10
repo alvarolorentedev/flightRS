@@ -18,7 +18,7 @@
 							"listen": "test",
 							"script": {
 								"type": "text/javascript",
-								"exec": "var data = JSON.parse(responseBody);\nvar expected = [\n  {\n    \"code\": \"SU\",\n    \"name\": \"Aeroflot\"\n  },\n  {\n    \"code\": \"MU\",\n    \"name\": \"China Eastern\"\n  },\n  {\n    \"code\": \"EK\",\n    \"name\": \"Emirates\"\n  },\n  {\n    \"code\": \"KE\",\n    \"name\": \"Korean Air lines\"\n  },\n  {\n    \"code\": \"QF\",\n    \"name\": \"Qantas\"\n  },\n  {\n    \"code\": \"SQ\",\n    \"name\": \"Singapore Airlines\"\n  }\n];\ntests[\"Airlines match\"] = JSON.stringify(data) === JSON.stringify(expected);\n"
+								"exec": "var data = JSON.parse(responseBody);\ntests[\"airlines has results\"] = data !== undefined && data.length != 0;"
 							}
 						}
 					],
@@ -53,7 +53,7 @@
 							"listen": "test",
 							"script": {
 								"type": "text/javascript",
-								"exec": "var data = JSON.parse(responseBody);\nvar expected = [\n  {\n    \"airportCode\": \"CDG\",\n    \"airportName\": \"Charles De Gaulle Intl Arpt\",\n    \"cityCode\": \"PAR\",\n    \"cityName\": \"Paris\",\n    \"countryCode\": \"FR\",\n    \"countryName\": \"France\",\n    \"latitude\": 49.012779,\n    \"longitude\": 2.55,\n    \"stateCode\": \"\",\n    \"timeZone\": \"Europe/Paris\"\n  },\n  {\n    \"airportCode\": \"ORY\",\n    \"airportName\": \"Orly Arpt\",\n    \"cityCode\": \"PAR\",\n    \"cityName\": \"Paris\",\n    \"countryCode\": \"FR\",\n    \"countryName\": \"France\",\n    \"latitude\": 48.725278,\n    \"longitude\": 2.359444,\n    \"stateCode\": \"\",\n    \"timeZone\": \"Europe/Paris\"\n  }\n];\ntests[\"Airlines match\"] = JSON.stringify(data) === JSON.stringify(expected);\n"
+								"exec": "var data = JSON.parse(responseBody);\ntests[\"airports has results\"] = data !== undefined && data.length != 0;"
 							}
 						}
 					],
@@ -70,6 +70,41 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\"place\": \"paris\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "search",
+			"description": "",
+			"item": [
+				{
+					"name": "search flight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var data = JSON.parse(responseBody);\ntests[\"search has results\"] = data !== undefined && data.length != 0;\n"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:3000/search",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"date\": \"2016-09-12\", \"from\": \"SYD\" ,\"to\": \"JFK\" }"
 						},
 						"description": ""
 					},
