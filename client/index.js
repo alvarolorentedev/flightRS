@@ -6,6 +6,8 @@ var RequestPresenter = require('./presenters/request-presenter.js');
 
 var AvailabilityModel= require('./models/availabiliy.js');
 var AvailabilityPresenter = require('./presenters/availability-presenter.js');
+
+var IndesStyle = require('./views/styles/index.styl');
 var AvailabilityStyle = require('./views/styles/availability.styl');
 
 var aggregatorHandler  = new Aggregator(); 
