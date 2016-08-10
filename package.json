@@ -4,9 +4,16 @@
   "description": "front end app example for travel reservations",
   "main": "server/server.js",
   "scripts": {
-    "start": "node .",
-    "dev": "node . --dev",
-    "test": "mocha test --recursive"
+    "dev-client": "node . --dev",
+    "dev-server": "nodemon .",
+    
+    "test": "mocha test --recursive",
+
+    "build": "webpack",
+    "execute": "node . --production",
+
+    "start": "npm run build && npm run execute"
+    
   },
   "author": "kanekotic <alvarojosepl@gmail.com> (https://github.com/kanekotic)",
   "license": "MIT",

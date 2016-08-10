@@ -15,6 +15,7 @@ var isDevMode = process.argv.includes('--dev');
 if(isDevMode)
     require('./webpack-load')(app);
 
+app.use('/www', express.static('www'));
 app.use('/partials', express.static('client/views/partials', {etag: false, lastModified: false}));
 app.use('/scripts', express.static('node_modules'));
 app.use(bodyParser.json());
