@@ -1,8 +1,8 @@
 var request = require('request');
 
-function airports(query, callback){
+function search(query, airline){
     return new Promise((resolve, reject)=>{
-        request('http://node.locomote.com/code-task/airports?q='+query, function (error, response, body) {
+        request('http://node.locomote.com/code-task/flight_search/'+airline+'?date='+query.date+"&from="+query.from+"&to="+query.to, function (error, response, body) {
             if (!error && response.statusCode == 200)
                 resolve(body);
             else
@@ -11,4 +11,4 @@ function airports(query, callback){
     });
 }
 
-module.exports = airports;
+module.exports = search;
