@@ -1,8 +1,9 @@
 var express = require('express');
+var airlines = require('./requests/airlines.js');
 var router = express.Router();
 
-router.get('/', function(req, res) {
-    res.send('not implemente');
+router.post('/', function(req, res) {
+    airlines((response) =>{ res.send(response); });
 });
 
 module.exports = router;

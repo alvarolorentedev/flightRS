@@ -1,14 +1,9 @@
 var express = require('express');
+var airports = require('./requests/airports.js');
 var router = express.Router();
-var request = require('request');
-
 
 router.post('/', function(req, res) {
-    request('http://node.locomote.com/code-task/airports?q='+req.body.place, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            res.send(body)
-        }
-    });
+    airports(req.body.place, (response) =>{ res.send(response); });
 });
 
 module.exports = router;
