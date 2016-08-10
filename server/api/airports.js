@@ -1,22 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var http = require('http');
+var request = require('request');
+
 
 router.post('/', function(req, res) {
-    var options = {
-        host: 'node.locomote.com',
-        path: '/code-task/airports?q='+req.body.place
-    };
-    callback = (response) => {
-    var str = '';
-    response.on('data', (chunk) => {
-        str += chunk;
+    request('http://node.locomote.com/code-task/airports?q='+req.body.place, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            res.send(body)
+        }
     });
-    response.on('end',  () => {
-        res.send(str);
-    });
-    }
-    http.request(options, callback).end();
 });
 
 module.exports = router;
