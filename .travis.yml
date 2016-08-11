@@ -12,6 +12,6 @@ install:
 
 script:
 - npm test
-- npm start 1>/dev/null 2>/dev/null &
-- newman -c ./test/Test_flightRS.json -x
+- npm run execute 1>/dev/null 2>/dev/null &
+- newman -x -c ./test/Test_flightRS.json
 #- if [[ "$TRAVIS_TAG" ]]; then npm run dist --production ; fi

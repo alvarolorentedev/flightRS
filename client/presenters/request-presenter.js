@@ -54,8 +54,9 @@ module.exports = class requestPresenter{
                             process(data);
                         },"json");
                 },
-                 displayText:  (item) => { return item.airportName; }, 
-                 updater: (item) => { return item.airportCode; }
+                minLength: 2,
+                displayText:  (item) => { return item.airportName; }, 
+                updater: (item) => { return item.airportCode; }
             });
             
             $('#datepicker').datepicker({ 
