@@ -16,6 +16,8 @@ module.exports = class requestPresenter{
     
     _bindEvents(){
         this._aggregator.on("frontend:flight:request", (request) => {
+            $('#availability').hide();
+            $('#loading').show();
             this._aggregator.trigger("api:search:request", request, "day");
             
             $('.availability-table-body').empty();
@@ -37,6 +39,7 @@ module.exports = class requestPresenter{
             this._data[day].result = results;
             this._data[day].result.sort((first, second) => first.price - second.price);
             this._updateResults(this._data[day]);
+            $('#loading').hide();
             $('#availability').show();
         });
     }
