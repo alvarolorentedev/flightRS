@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'www'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/www'
   },
   resolveLoader: {
     root: path.join(__dirname, 'node_modules'),

@@ -68,7 +68,7 @@ module.exports = class requestPresenter{
     OnSubmit(e){
         if (!e.isDefaultPrevented()) {
             $('#collapseSearch').collapse('hide');
-            this._aggregator.trigger("api:search:request", this._model);        
+            this._aggregator.trigger("frontend:flight:request", this._model);        
         }
         return false;
     }
