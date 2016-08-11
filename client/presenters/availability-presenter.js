@@ -16,9 +16,11 @@ module.exports = class requestPresenter{
     
     _bindEvents(){
         this._aggregator.on("frontend:flight:request", (request) => {
-            
             this._aggregator.trigger("api:search:request", request, "day");
-
+            
+            $('.availability-table-body').empty();
+            $('.date__header').html('-');
+            
             var extraRange = 2;
             for( var extra = 1; extra <= extraRange; ++extra){
                 var requestUp = request.clone();
@@ -30,8 +32,10 @@ module.exports = class requestPresenter{
             }
             
         });
+
         this._aggregator.on("api:search:results", (results, day) => {
             this._data[day].result = results;
+            this._data[day].result.sort((first, second) => first.price - second.price);
             this._updateResults(this._data[day]);
             $('#availability').show();
         });
@@ -39,17 +43,18 @@ module.exports = class requestPresenter{
 
     _updateResults(day)
     {
-        $(day.body).empty();
-        this._updateTable($(day.header), $(day.body),day.result);
+        this._updateTable(day);
         this._bindFlightEvents(day.body);
     }
 
-    _updateTable(header, table, results)
+    _updateTable(day)
     {
-        header.html(moment(results[0].departs).format("YYYY-MM-DD"));
-        for(var result of results)
+        var min = Math.min(...day.result.map(flight => flight.price));
+        var date = moment(day.result[0].start.dateTime).format("YYYY-MM-DD");
+        $(day.header).html(date + " ("+ min +")");
+        for(var result of day.result)
         {
-            var tr = $('<tr/>').appendTo(table);
+            var tr = $('<tr/>').appendTo($(day.body));
             var div = $('<div class="flight well" />').appendTo(tr);
             div.append('<div class="flight__airline">' + result.airline.code + '</div>');
             div.append('<div class="flight__price">' + result.price + '</div>');

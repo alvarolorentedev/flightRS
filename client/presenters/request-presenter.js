@@ -59,9 +59,7 @@ module.exports = class requestPresenter{
                 minLength: 2,
                 updater: item => item.airportCode,
                 highlighter: (item) => {
-                    console.log(this.query);
                     var airport = item.split(',');
-
                     return '<div class="typeahead__airport">\
                                 <div class="typeahead__airport__main">' + airport[1] +' ('+ airport[0] + ')</div>\
                                 <div class="typeahead__airport__sub">' + airport[2] + '</div>\
