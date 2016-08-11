@@ -35,9 +35,9 @@ module.exports = class apiHandler{
     constructor(aggregator){
         this._aggregator = aggregator;
         aggregator.on("api:search:request", (request) => {
-            //TODO: implement call to back end
-            var result = mockFlights;
-            this._aggregator.trigger("api:search:results", result);
+            $.post('/search', request.Json, (data) => {
+                            this._aggregator.trigger("api:search:results", data);
+                        },"json");
         });
     }
 }
