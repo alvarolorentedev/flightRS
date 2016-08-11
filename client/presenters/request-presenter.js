@@ -3,7 +3,6 @@ module.exports = class requestPresenter{
         this._document = document;
         this._aggregator = aggregator;
         this._model = model;
-        this._airports = [];
         this._bindEvents();  
         this._initValidation();  
         this._initControls();
@@ -50,13 +49,22 @@ module.exports = class requestPresenter{
             $('.typeahead').typeahead({
                 source: (query, process) =>{
                         $.post('/airports', { place : query }, (data) => {
-                            this._airports = data;
+                            for (var airport of data) {
+                                //required for typeahead correct bahaviour with objects and html output
+                                airport.name = airport.airportCode+','+airport.airportName+','+airport.cityName;
+                            }
                             process(data);
                         },"json");
                 },
                 minLength: 2,
-                displayText:  (item) => { return item.airportName; }, 
-                updater: (item) => { return item.airportCode; }
+                updater: item => item.airportCode,
+                highlighter: (item) => {
+                    var airport = item.split(',');
+                    return '<div class="typeahead__airport">\
+                                <div class="typeahead__airport__main">' + airport[1] +' ('+ airport[0] + ')</div>\
+                                <div class="typeahead__airport__sub">' + airport[2] + '</div>\
+                            </div>';
+                }
             });
             
             $('#datepicker').datepicker({ 
