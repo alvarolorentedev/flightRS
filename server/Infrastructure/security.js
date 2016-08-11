@@ -1,5 +1,4 @@
 var helmet = require('helmet');
-var session = require('express-session');
 
 function security(app){
     app.set('trust proxy', 1);  
@@ -12,12 +11,7 @@ function security(app){
 
         next();
     });
-    app.use(session({
-        secret: 'not a secret',
-        resave: false,
-        saveUninitialized: true,
-        cookie: { httpOnly:true, secure:true }
-    }));
+    //TODO: need to add csrf and session handling for private parts on the future if required
 }
 
 module.exports = security;
