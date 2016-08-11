@@ -19,7 +19,19 @@ var testEmptyRequest = function(){
     expect(localRequest.date).to.equal(null);
 };
 
+var testJsonProperty = function(){
+    var localRequest = new request();
+    localRequest.from = "JFK";
+    localRequest.to = "ORY";
+    localRequest.date = new date(2017,02,17);
+
+    var expected = { from: localRequest.from, to: localRequest.to, date: moment(localRequest.date).format("YYYY-MM-DD") }
+
+    expect(expected).to.deep.equal(localRequest.Json);
+};
+
 describe('Request Tests', function(){
     before(before);
     it ('test initial values', testEmptyRequest);
+    it ('test toJson property', testEmptyRequest);
 });
