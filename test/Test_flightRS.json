@@ -1,0 +1,116 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Test_flightRS",
+		"_postman_id": "ded4182d-f5d7-d3ba-ca4c-df47c4a07944",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "airlines",
+			"description": "",
+			"item": [
+				{
+					"name": "check airlines",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var data = JSON.parse(responseBody);\ntests[\"airlines has results\"] = data !== undefined && data.length != 0;"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:3000/airlines",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"place\": \"paris\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "airports",
+			"description": "",
+			"item": [
+				{
+					"name": "check airports",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var data = JSON.parse(responseBody);\ntests[\"airports has results\"] = data !== undefined && data.length != 0;"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:3000/airports",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"place\": \"paris\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "search",
+			"description": "",
+			"item": [
+				{
+					"name": "search flight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var data = JSON.parse(responseBody);\ntests[\"search has results\"] = data !== undefined && data.length != 0;\n"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:3000/search",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"date\": \"2016-09-12\", \"from\": \"SYD\" ,\"to\": \"JFK\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
