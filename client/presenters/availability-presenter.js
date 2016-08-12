@@ -1,6 +1,6 @@
 var moment = require('moment');
 
-module.exports = class requestPresenter{
+module.exports = class availabilityPresenter{
     constructor(document, aggregator){
         this._document = document;
         this._aggregator = aggregator;
@@ -21,6 +21,7 @@ module.exports = class requestPresenter{
             this._aggregator.trigger("api:search:request", request, "day");
             
             $('.availability-table-body').empty();
+            $('.date__header').hide();
             $('.date__header').html('-');
             
             var extraRange = 2;
@@ -53,16 +54,37 @@ module.exports = class requestPresenter{
     _updateTable(day)
     {
         var min = Math.min(...day.result.map(flight => flight.price));
-        var date = moment(day.result[0].start.dateTime).format("YYYY-MM-DD");
-        $(day.header).html(date + " ("+ min +")");
+        var date = moment(day.result[0].finish.dateTime).format("YYYY-MM-DD");
+        $(day.header).show();
+        $(day.header).html('<div class="date__header__date">' + date + '</div><div class="date__header__price"> '+ min +" $</div>");
         for(var result of day.result)
         {
-            var tr = $('<tr/>').appendTo($(day.body));
-            var div = $('<div class="flight well" />').appendTo(tr);
-            div.append('<div class="flight__airline">' + result.airline.code + '</div>');
-            div.append('<div class="flight__price">' + result.price + '</div>');
-            div.append('<div class="flight__date">' + moment(result.start.dateTime).format("YYYY-MM-DD  h:mm a") + ' - ' + moment(result.finish.dateTime).format("YYYY-MM-DD h:mm a") + '</div>');
+            this._renderIndividualResult(result, day);
         }
+    }
+
+    _renderIndividualResult(result, day)
+    {
+        var localId = result.flightNum + moment(result.start.dateTime).format("YYYYMMDDhmmss")
+        var extraDays = moment(result.finish.dateTime,['YYYY-MM-DD']).diff(moment(result.start.dateTime,['YYYY-MM-DD']), 'days');
+        var extraDaysString = '+' + extraDays;  
+        var tr = $('<tr/>').appendTo($(day.body));
+        var main = $('<div class="flight well" />').appendTo(tr);
+        main.append('<div class="flight__info col-md-10">\
+                        <div class= "flight__info__airline col-md-2">' + result.airline.name + '</div>\
+                        <div class= "flight__info__date col-md-10">\
+                            <div class= "flight__info__date__departs col-md-4">'+ moment(result.start.dateTime).format("h:mm a") + '</div>\
+                            <div class= "flight__info__date__trip col-md-4">\
+                                <div class="flight__info__date__trip__arrow">\<i class="glyphicon glyphicon-arrow-right"></i></div>\
+                                <div  class="flight__info__date__trip__days">'+ extraDaysString + '</div>\
+                            </div>\
+                            <div class= "flight__info__date__arrives col-md-4">'+ moment(result.finish.dateTime).format("h:mm a") + '</div>\
+                    </div>');
+        main.append('<div class="flight__selection col-md-2">\
+                        <div class= "flight__selection_price">' + result.price + ' $</div>\
+                        <button type="button" class= "btn btn-success btn-sm flight__flight__select" id="flight-select-'+localId+'">select</button>\
+                    </div></div>');
+                    this._bindSelectButton(localId,result);
     }
 
     _bindFlightEvents(body){
@@ -71,6 +93,12 @@ module.exports = class requestPresenter{
                 $('.flight').removeClass('flight--selected');
                 $(this).addClass('flight--selected');
             });
+        });
+    }
+
+    _bindSelectButton(id, flight){
+        this._document.ready(() =>{
+            $('#flight-select-'+id).click(() => alert("selected " + JSON.stringify(flight)));
         });
     }
 }

@@ -6,7 +6,9 @@ var RequestPresenter = require('./presenters/request-presenter.js');
 
 var AvailabilityPresenter = require('./presenters/availability-presenter.js');
 
-var IndesStyle = require('./views/styles/index.styl');
+var RequestStyle = require('./views/styles/request.styl');
+var InitialStyle = require('./views/styles/initial.styl');
+var IndexStyle = require('./views/styles/index.styl');
 var AvailabilityStyle = require('./views/styles/availability.styl');
 
 var aggregatorHandler  = new Aggregator(); 

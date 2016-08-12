@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 module.exports = class requestPresenter{
     constructor(document, aggregator, model){
         this._document = document;
@@ -77,6 +79,7 @@ module.exports = class requestPresenter{
     OnSubmit(e){
         if (!e.isDefaultPrevented()) {
             $('#collapseSearch').collapse('hide');
+            $("#search-info").html(this._model.from+' <i class="glyphicon glyphicon-arrow-right"/> '+this._model.to + ' ('+moment(this._model.date).format("YYYY-MM-DD")+')');
             this._aggregator.trigger("frontend:flight:request", this._model);        
         }
         return false;

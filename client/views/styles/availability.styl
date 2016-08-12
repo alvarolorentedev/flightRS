@@ -1,4 +1,6 @@
-clouds = #ecf0f1;
+clouds = rgba(236,240,241, 0.9);
+clouds--seelected = rgba(236,240,241, 1);
+white-transparent = rgba(255, 255, 255, 0.5);
 
 #availability
     display: none;
@@ -8,16 +10,52 @@ clouds = #ecf0f1;
     margin:0 auto;
     width: 100px;
 
+#availability
+    margin: 0px 0px;
+    padding: 0px;
+
+.date
+    &__header
+        background: white-transparent;
+        &__date
+            font-size: 140%;
+            font-weight: bold; 
+        &__price
+            font-size: 80%;
+
 .flight
     background: clouds;
     margin: 0px;
+    overflow:hidden;
+    position: relative;
+    text-align: center;
+    &__info
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        &__date  
+            &__departs 
+                font-size: 120%;
+                font-weight: bold;
+                text-align: right;
+            &__trip
+                margin:0 auto;
+                width: 100px;     
+                text-align: center;
+                &__days
+                    font-size: 90%;                       
+            &__arrives 
+                font-size: 120%;
+                font-weight: bold;
+                text-align: left;
+    &__selection
+        float: right
+        text-align: center;
+        &_price
+            font-size: 130%;
+            margin-bottom: 10px;
+            font-weight: bold;
     &:hover
         background: @background - 40;
-    &__airline
-        float: left;
-    &__price
-        float: right;
-    &__date
-        margin-left: 70px;
     &--selected
-        background: @background - 20;
+        background: clouds--seelected;
