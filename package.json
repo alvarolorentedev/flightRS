@@ -5,10 +5,11 @@
   "main": "server/server.js",
   "scripts": {
     "dev-client": "node . --dev",
-    "dev-server": "nodemon .",
+    "dev-server": "nodemon . --dev",
     "test": "mocha test --recursive",
     "postinstall": "NODE_ENV=production webpack",
-    "start": "node . --production"
+    "start": "node . --production",
+    "execute-production": "npm install && npm run postinstall && npm start"
   },
   "author": "kanekotic <alvarojosepl@gmail.com> (https://github.com/kanekotic)",
   "license": "MIT",
