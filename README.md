@@ -38,3 +38,20 @@ The project has been integrated in a ```Travis-CI``` build. This build is in cha
 - ```integration test```: the back-end endpoints responses are been tested using ```newman```. This is the command line related to ```postman``` so the test can be generated and run also in the developers machine using this last one.
 
 Find all the information of the CI in the next image/link [![Build Status](https://travis-ci.org/kanekotic/flightRS.svg?branch=develop)](https://travis-ci.org/kanekotic/flightRS)
+
+## Run and execute
+
+No packages are required locally on deployment. after cloning the repository to run:
+- Production enviroments:
+```
+npm run execute-production
+
+```
+- Development enviroments (install ```nodemon``` and ```Webpacks```).
+```
+npm run dev-client
+```
+or
+```
+npm run dev-server
+```
