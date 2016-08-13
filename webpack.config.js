@@ -1,12 +1,14 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var entryPoints = ['./client/index.js']
+
+if (process.env.NODE_ENV !== 'production')
+  entryPoints.push('webpack-hot-middleware/client?reload=true')
+
 module.exports = {
   context: path.join(__dirname),
-  entry: [
-    'webpack-hot-middleware/client?reload=true',
-    './client/index.js'
-  ],
+  entry: entryPoints,
   output: {
     path: path.join(__dirname, 'www'),
     filename: 'bundle.js',
