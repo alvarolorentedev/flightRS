@@ -12,10 +12,6 @@
         <link rel="stylesheet" href="/scripts/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     </head>
     <body>
-        <script src="/www/w3data.js"></script>
-        <script>
-            w3IncludeHTML();
-        </script>
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
@@ -29,13 +25,14 @@
             </div>
           </div>
         </nav>    
-        <div class="container">
-            <div w3-include-html="/partials/request.html"></div>
-            <div w3-include-html="/partials/availability.html"></div>
-            <div w3-include-html="/partials/initial.html"></div>
-        </div>
-
         
+        <img id="page-loading" style="margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0;" src="/www/loading.svg"/>
+ 
+        <div class="container" id="page-content" style="display:none">
+            <div id="request-html"></div>
+            <div id="availability-html"></div>
+            <div id="initial-html"></div>
+        </div>
         
         <script src="/scripts/jquery/dist/jquery.min.js"></script>
         <script src="/scripts/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -43,5 +40,13 @@
         <script src="/scripts/bootstrap-3-typeahead/bootstrap3-typeahead.min.js"></script>
         <script src="/scripts/bootstrap-validator/dist/validator.min.js"></script>
         <script src="/www/bundle.js"></script>
+        <script> 
+            $(() => {
+                var loadRequest = $("#request-html").load("./partials/request.html");
+                var loadAvalability = $("#availability-html").load("./partials/availability.html"); 
+
+                Promise.all([loadRequest, loadAvalability]).then(() => init());
+            });
+        </script> 
     </body>
 </html>
