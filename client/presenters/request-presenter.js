@@ -5,6 +5,7 @@ module.exports = class requestPresenter{
         this._document = document;
         this._aggregator = aggregator;
         this._model = model;
+        this._airports = [];
         this._bindEvents();  
         this._initValidation();  
         this._initControls();
@@ -29,8 +30,13 @@ module.exports = class requestPresenter{
     _initValidation()
     {
         this._document.ready(() => {
-             $("#flight-search").validator({      
+             $("#flight-search").validator({   
+                delay:2500,   
                 custom: {
+                    'is-airport': ($el) => {
+                        if(!this._airports.includes($el.val()))
+                            return "This airport does not exist, please select and existing airport";   
+                     },
                     'is-not-from': ($el) => { 
                         if($el.val() === this._model.from)
                             return "Arrival and Departure airports can't be the same";   
@@ -52,6 +58,8 @@ module.exports = class requestPresenter{
                 source: (query, process) =>{
                         $.post('/airports', { place : query }, (data) => {
                             for (var airport of data) {
+                                if(!this._airports.includes(airport.airportCode))
+                                    this._airports.push(airport.airportCode);
                                 //required for typeahead correct bahaviour with objects and html output
                                 airport.name = airport.airportCode+','+airport.airportName+','+airport.cityName;
                             }
