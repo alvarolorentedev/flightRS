@@ -31,7 +31,7 @@ module.exports = class requestPresenter{
     {
         this._document.ready(() => {
              $("#flight-search").validator({   
-                delay:2500,   
+                delay: 120000,   
                 custom: {
                     'is-airport': ($el) => {
                         if(!this._airports.includes($el.val()))
