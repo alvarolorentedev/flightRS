@@ -18,5 +18,3 @@ var request = new RequestModel();
 var requestsview = new RequestPresenter($(document.search), aggregatorHandler, request);
 
 var availabilityview = new AvailabilityPresenter($(document.availability), aggregatorHandler);
-
-console.log('bundle loaded')
