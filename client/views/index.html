@@ -26,7 +26,47 @@
           </div>
         </nav>    
         <div class="container">
-            <div w3-include-html="/partials/request.html"></div>
+            <div id="search" class="panel-group col-md-8" role="tablist" aria-multiselectable="true" >
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+            <div class="panel-title">
+                <div class="search__info" id="search-info">
+                </div>
+                <div class="search__title">
+                    Search
+                </div>
+            </div>    
+            </a>
+            
+            </div>
+            <div id="collapseSearch" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <form id="flight-search" autocomplete="off">
+                    <div class="form-group">
+                        <input type="text" class="form-control typeahead" id="FromLocation" placeholder="From" data-is-not-to="_" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control typeahead" id="ToLocation" placeholder="To" data-is-not-from="_" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group date" id="datepicker">
+                            <input type="text" class="form-control" id="Date" placeholder="Date" required>
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </form>
+                <button type="submit" form="flight-search" class="glyphicon glyphicon-search btn btn-primary pull-right"></button>
+            </div>
+            </div>
+    </div>
+</div>
+
             <div w3-include-html="/partials/availability.html"></div>
             <div w3-include-html="/partials/initial.html"></div>
         </div>
