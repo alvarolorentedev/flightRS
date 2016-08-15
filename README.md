@@ -10,7 +10,7 @@ The front-end has been defined using the ```MVP``` patern for separation of conc
     - ```partials```:  html partial classes for the UI devinition (found on path /client/views/partials)
     - ```styles```: ui styles defined using ```stylus``` (found on path /client/views/styles)
 
-All the code is writen using ```ES6``` and transpiled for compatibility browser reasons using ```webpacks```. For styling and control ```bootstrap``` has been used with some extra controls for UI improvements (```bootstrap-3-typeahead```,```bootstrap-datepicker``` and```bootstrap-validator```).
+All the code is writen using ```ES6``` and transpiled for compatibility browser reasons using ```webpacks``` in conjuction with  ```babel```. For styling and control ```bootstrap``` has been used with some extra controls for UI improvements (```bootstrap-3-typeahead```,```bootstrap-datepicker``` and```bootstrap-validator```).
 
 ![flightrs](https://cloud.githubusercontent.com/assets/3071208/17628214/a02b22a6-60b4-11e6-93f3-1eb239b92917.png)
 
@@ -37,7 +37,9 @@ The project has been integrated in a ```Travis-CI``` build. This build is in cha
 - ```Unit tests```: have been defined using ```mocha``` and ```chai```. This have been done just in a few classes as example but could be extended but required effort on the mocking side with ```sinon```.
 - ```integration test```: the back-end endpoints responses are been tested using ```newman```. This is the command line related to ```postman``` so the test can be generated and run also in the developers machine using this last one.
 
-Find all the information of the CI in the next image/link [![Build Status](https://travis-ci.org/kanekotic/flightRS.svg?branch=develop)](https://travis-ci.org/kanekotic/flightRS)
+Find all the information of the CI in the next image/link : [![Build Status](https://travis-ci.org/kanekotic/flightRS.svg?branch=develop)](https://travis-ci.org/kanekotic/flightRS)
+
+Also a deployed version of the code can be found [here](http://104.236.246.180/)
 
 ## Run and execute
 
@@ -47,7 +49,7 @@ No packages are required locally on deployment. after cloning the repository to 
 npm run execute-production
 
 ```
-- Development enviroments (install ```nodemon``` and ```Webpacks```).
+- Development enviroments (installation of ```nodemon``` and ```Webpacks``` is required).
 ```
 npm run dev-client
 ```
