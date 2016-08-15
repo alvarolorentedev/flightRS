@@ -10,7 +10,7 @@ The front-end has been defined using the ```MVP``` patern for separation of conc
     - ```partials```:  html partial classes for the UI devinition (found on path /client/views/partials)
     - ```styles```: ui styles defined using ```stylus``` (found on path /client/views/styles)
 
-All the code is writen using ```ES6``` and transpiled for compatibility browser reasons using ```webpacks```. For styling and control ```bootstrap``` has been used with some extra controls for UI improvements (```bootstrap-3-typeahead```,```bootstrap-datepicker``` and```bootstrap-validator```).
+All the code is writen using ```ES6``` and transpiled for compatibility browser reasons using ```webpacks``` in conjuction with  ```babel```. For styling and control ```bootstrap``` has been used with some extra controls for UI improvements (```bootstrap-3-typeahead```,```bootstrap-datepicker``` and```bootstrap-validator```).
 
 ![flightrs](https://cloud.githubusercontent.com/assets/3071208/17628214/a02b22a6-60b4-11e6-93f3-1eb239b92917.png)
 
