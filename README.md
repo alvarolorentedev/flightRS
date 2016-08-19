@@ -1,4 +1,4 @@
-# Flight RS
+# ![flightrs](https://cloud.githubusercontent.com/assets/3071208/17800759/1cdc1428-65e6-11e6-9d6c-c0a93f9a8b6a.png)
 
 This project is an single page application simulating a reservation page the project has is devided in fornt-end and back-end
 
